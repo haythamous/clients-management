@@ -1,11 +1,9 @@
 package com.example.client.builders;
 
 import com.example.client.data.UserData;
-import com.example.client.dataloader.SampleClientDataLoader;
 import com.example.client.entities.Group;
 import com.example.client.entities.User;
 import com.example.client.entities.UserGroup;
-import com.example.client.repositories.UserRepository;
 import com.example.client.services.GroupService;
 import com.example.client.services.UserGroupService;
 import com.example.client.services.UserService;
