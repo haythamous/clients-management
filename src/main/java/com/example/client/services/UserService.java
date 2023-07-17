@@ -1,22 +1,37 @@
 package com.example.client.services;
 
+import com.example.client.data.UserDTO;
 import com.example.client.entities.User;
+import com.example.client.mappers.UserMapper;
 import com.example.client.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    @Autowired
+    private UserMapper userMapper;
+
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(userMapper::userToDto)
+                .collect(Collectors.toList());
+    }
+
+    public User saveUser(UserDTO userDTO) {
+        User user = userMapper.dtoToUser(userDTO);
+        return userRepository.save(user);
     }
 
     public User saveUser(User user) {
@@ -28,7 +43,11 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public Optional<User> getUserById(Long userId) {
-        return userRepository.findById(userId);
+    public UserDTO getUserById(Long userId) {
+        User userById = userRepository.findById(userId).orElse(null);
+        if (userById != null) {
+            return userMapper.userToDto(userById);
+        }
+        return null;
     }
 }

@@ -9,6 +9,8 @@ This is a demo project to test some spring-boot feature such as:
 * Spring Security
 * Load Sample data using Spring Batch 
 * Load Sample data using ApplicationRunner
+* Use of MapStruct to load DTO.
+* Use lombok
 
 Steps to configure the project:
 1. Navigate to the root folder of the project and execute the following command: docker-compose -f docker-compose-mysql.yml up
@@ -19,7 +21,9 @@ db.name= clientdb
 db.user= root
 db.pwd = root
 
-2. Execute the maven install goal to download and install all the dependencies that the project will need.
+2. Execute the maven install goal to download and install all the dependencies that the project will need, using the following command:
+   mvn install -Dmaven.plugin.validation=VERBOSE
+
 
 3. Execute the 2 SQL files located on /resources/spring-batch/ folder.
 

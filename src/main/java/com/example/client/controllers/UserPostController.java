@@ -1,5 +1,6 @@
 package com.example.client.controllers;
 
+import com.example.client.data.UserDTO;
 import com.example.client.entities.Post;
 import com.example.client.entities.User;
 import com.example.client.services.PostService;
@@ -9,10 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.GraphQlExceptionHandler;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.execution.ErrorType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.validation.BindException;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,12 +33,11 @@ public class UserPostController {
     PostService postService;
 
     @QueryMapping
-    public User getUser(@Argument Long id) {
-        Optional<User> userById = userService.getUserById(id);
-        return userById.isPresent() ? userById.get(): new User();
+    public UserDTO getUser(@Argument Long id) {
+        return userService.getUserById(id);
     }
     @QueryMapping
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
@@ -51,6 +55,12 @@ public class UserPostController {
     public User createUser(@Argument String name) {
         User user = new User(name);
         return userService.saveUser(user);
+    }
+
+    @PostMapping
+    public ResponseEntity<User> saveUser(@RequestBody UserDTO userDto) {
+        User savedUser = userService.saveUser(userDto);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
     @MutationMapping
     public String deleteUser(@Argument Long id) {
