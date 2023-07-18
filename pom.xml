@@ -118,8 +118,8 @@
 
 		<!-- MySQL Connector -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<version>8.0.33</version>
 		</dependency>
 
@@ -182,7 +182,70 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+<!--			<plugin>
+				<groupId>com.structure101.java</groupId>
+				<artifactId>structure101-maven-plugin</artifactId>
+				<version>23194</version>
+				<configuration>
+					<project>${project.name}</project>
+					<archoutputfile>${structure101outputDir}\arch.xml</archoutputfile>
+					<baseline></baseline>
+					<checkXsOutputFile>${structure101outputDir}\check-xs.xml</checkXsOutputFile>
+					<classpath>${build.outputDirectory}</classpath>
+					<date>system time</date>
+					<failBuildOnViolation>false</failBuildOnViolation>
+					<label>1.0.0</label>
+					<localProject>${project.basedir}</localProject>
+					<offendersOutputFile>${structure101outputDir}\offender.cva</offendersOutputFile>
+					<onlyNew>false</onlyNew>
+					<outputdir>${structure101outputDir}</outputdir>
+					<overwrite>true</overwrite>
+					<projectMetricOutputFile>${structure101outputDir}\report-metric.xml</projectMetricOutputFile>
+					<repository>${structure101repository}</repository>
+					<rpkey></rpkey>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>publish</goal>
+							<goal>check-architecture</goal>
+							<goal>check-xs</goal>
+							<goal>report-metrics</goal>
+							<goal>report-summary</goal>
+							<goal>report-xs</goal>
+							&lt;!&ndash;<goal>retropublish</goal>&ndash;&gt;
+						</goals>
+					</execution>
+				</executions>
+			</plugin>-->
+
 		</plugins>
 	</build>
+
+<!--	<pluginRepositories>
+		<pluginRepository>
+			<id>structure101plugin</id>
+			<layout>default</layout>
+			<url>https://repository.structure101.com</url>
+			<releases>
+				<checksumPolicy>warn</checksumPolicy>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>structure101</id>
+			<url>https://repository.structure101.com</url>
+			<releases>
+				<checksumPolicy>warn</checksumPolicy>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</repository>
+	</repositories>-->
 
 </project>
