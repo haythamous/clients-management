@@ -1,9 +1,7 @@
 package com.example.client.controllers;
 
 import com.example.client.data.UserDTO;
-import com.example.client.entities.User;
 import com.example.client.services.UserService;
-import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
