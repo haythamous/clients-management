@@ -2,6 +2,7 @@ package com.example.client.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,10 +26,15 @@ public class User {
 
     private String avatar;
 
+    @Column(name = "birthdate")
+    private LocalDate birthdate;
+
     @OneToMany(mappedBy = "user")
     private Set<UserGroup> userGroups = new HashSet<>();
 
-    public User(String firstName, String lastName, String username, String uid, String password, String email, String gender, String phoneNumber, String avatar) {
+    @OneToOne(mappedBy = "user")
+    private Address address;
+    public User(String firstName, String lastName, String username, String uid, String password, String email, String gender, String phoneNumber, String avatar, LocalDate birthdate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -38,6 +44,7 @@ public class User {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.avatar = avatar;
+        this.birthdate = birthdate;
     }
 
     public User(String name) {
@@ -134,5 +141,21 @@ public class User {
 
     public void setUserGroups(Set<UserGroup> userGroups) {
         this.userGroups = userGroups;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

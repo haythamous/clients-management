@@ -17,6 +17,7 @@ public class UserData {
     private String gender;
     private String avatar;
     private String phone_number;
-
+    private String date_of_birth;
     private Subscription subscription;
+    private Address address;
 }

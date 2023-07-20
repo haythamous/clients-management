@@ -1,7 +1,9 @@
 package com.example.client.data;
 
+import com.example.client.entities.Address;
 import com.example.client.entities.UserGroup;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UserDTO {
@@ -22,7 +24,11 @@ public class UserDTO {
     private String lastName;
     private List<UserGroup> userGroups;
 
-    public UserDTO(String fullName, String username, String uid, String password, String email, String gender, String phoneNumber, String avatar) {
+    private LocalDate birthdate;
+
+    private Address address;
+
+    public UserDTO(String fullName, String username, String uid, String password, String email, String gender, String phoneNumber, String avatar, LocalDate birthdate) {
         this.fullName = fullName;
         this.username = username;
         this.uid = uid;
@@ -31,6 +37,7 @@ public class UserDTO {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.avatar = avatar;
+        this.birthdate = birthdate;
     }
 
     public String getFullName() {
@@ -127,5 +134,21 @@ public class UserDTO {
 
     public void setUserGroups(List<UserGroup> userGroups) {
         this.userGroups = userGroups;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
