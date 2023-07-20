@@ -39,8 +39,7 @@ public class UserPostController {
 
     @QueryMapping
     public Post getPost(@Argument Long id) {
-        Optional<Post> postById = postService.getPostById(id);
-        return postById.isPresent() ? postById.get(): new Post();
+        return postService.getPostById(id);
     }
     @QueryMapping
     public List<Post> getAllPosts() {

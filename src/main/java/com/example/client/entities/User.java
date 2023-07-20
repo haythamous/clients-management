@@ -1,5 +1,6 @@
 package com.example.client.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -30,9 +31,11 @@ public class User {
     private LocalDate birthdate;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private Set<UserGroup> userGroups = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
+    @JsonBackReference
     private Address address;
     public User(String firstName, String lastName, String username, String uid, String password, String email, String gender, String phoneNumber, String avatar, LocalDate birthdate) {
         this.firstName = firstName;

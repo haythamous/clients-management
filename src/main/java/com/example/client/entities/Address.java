@@ -1,5 +1,6 @@
 package com.example.client.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -20,6 +21,7 @@ public class Address {
     @OneToOne
     @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonBackReference
     private User user;
 
     public Address() {

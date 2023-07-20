@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface PostService {
     List<Post> getAllPosts();
     void savePost(Post post);
-    Optional<Post> getPostById(Long postId);
+    Post getPostById(Long postId);
     void deletePost(Long postId);
 }
