@@ -1,8 +1,10 @@
 package com.example.client.controllers;
 
+import com.example.client.data.UserDTO;
 import com.example.client.entities.Post;
 import com.example.client.services.PostService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +24,10 @@ public class PostController {
     public List<Post> getAllPosts() {
         return postService.getAllPosts();
     }
+
+    @GetMapping("/{id}")
+    public Post getPostById(@PathVariable Long id) {
+        return postService.getPostById(id);
+    }
+
 }

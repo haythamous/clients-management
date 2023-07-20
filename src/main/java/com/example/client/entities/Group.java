@@ -1,5 +1,6 @@
 package com.example.client.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -16,6 +17,7 @@ public class Group {
     private String name;
 
     @OneToMany(mappedBy = "group")
+    @JsonBackReference
     private Set<UserGroup> userGroups = new HashSet<>();
 
     public Group() {

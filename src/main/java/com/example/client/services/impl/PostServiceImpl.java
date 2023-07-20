@@ -24,8 +24,8 @@ public class PostServiceImpl implements PostService {
         postRepository.save(post);
     }
 
-    public Optional<Post> getPostById(Long postId) {
-        return postRepository.findById(postId);
+    public Post getPostById(Long postId) {
+        return postRepository.findById(postId).orElse(null);
     }
 
     public void deletePost(Long postId) {

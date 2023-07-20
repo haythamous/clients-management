@@ -130,17 +130,17 @@
 			<version>0.4</version>
 		</dependency>
 
-		<!-- Spring Security OAuth -->
+<!--		&lt;!&ndash; Spring Security OAuth &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
 
-		<!-- Spring Security -->
+		&lt;!&ndash; Spring Security &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>

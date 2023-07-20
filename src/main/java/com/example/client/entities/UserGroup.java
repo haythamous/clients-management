@@ -1,5 +1,6 @@
 package com.example.client.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -15,10 +16,12 @@ public class UserGroup {
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "USER_ID")
+    @JsonBackReference
     private User user;
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "GROUP_ID")
+    @JsonBackReference
     private Group group;
 
     private boolean activated;
